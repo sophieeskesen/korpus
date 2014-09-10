@@ -1,0 +1,114 @@
+Inläsning:
+	Öppna filen L, namn: korpus
+	Skapa ett index I för sökordets position i L
+	Läs in hela texten i L
+		För varje nytt ord
+			Hitta ordets startposition (t.ex. 	"Allt är som det
+												ska vara" 
+			ger [Allt,0,0], [är,0,5] ...)
+		lägg till det i I
+
+Hantering av filer:
+	Sortera I i bokstavsordning (OBS! Kolla bokstavsordningen med ' ','Å','Ä','Ö')
+
+	Skapa en indexarray A[abc], med tecknen 'a'-'ö' och ' ' = 30 tecken, totalt 30^3 positioner
+		[a  ,aa ,aaa,ab ,...]
+	
+	Hasha I till A
+		a = 1, b=2, c=3 ...
+		wprefix = f[w[0]]*900 + f[w[1]]*30 + f[w[2]]*1
+		så abc = 1,2,3 --> 1*900 + 2*30 + 3*1 = 963
+
+
+
+
+
+
+
+Sökning:
+	Indata: sökord, t.ex. "hund"
+	Identifiera startbokstäver: "hun"
+
+	Gå till lista A: "hun" = position 478 i Index I
+	Gå till lista A: "huo" = position 512 i Index I
+
+	Jämför alla ord med sökordet "hund" mellan I[478] och I[512-1]
+	Hämta dess positioner i L
+
+	Hitta alla förekomster: 
+		Kontrollera att det finns 30 tecken innan och efter
+		spara förekomsten till en lista:
+			förekomst 1: ev. 30 tecken <sökord> ev. 30 tecken
+			förekomst 2: ev. 30 tecken <sökord> ev. 30 tecken
+			...
+
+	Hur många förekomster?
+		>= 25 -->
+			Vill användaren skriva ut alla ändå?
+		< 25 -->
+			Skriv ut "Det finns x antal förekomster av ordet."
+			Skriv ut alla förekomster
+
+
+
+
+
+Användning:
+	I terminalen: java Konkordans <sökord>
+	Det finns x antal förekomster av ordet.
+		förekomst 1: 30 tecken <sökord> 30 tecken
+		förekomst 2: 30 tecken <sökord> 30 tecken
+		...
+		förekomst x: 30 tecken <sökord> 30 tecken
+	
+	Det finns fler än 25 förekomster av ordet. Vill du ha förekomsterna utksrivna på skämen?
+		Ja -->
+			Det finns x antal förekomster av ordet.
+				förekomst 1: 30 tecken <sökord> 30 tecken
+				förekomst 2: 30 tecken <sökord> 30 tecken
+				...
+				förekomst x: 30 tecken <sökord> 30 tecken
+		Nej -->
+			Bryt.	
+
+
+Tester att implementera:
+	Inläsning:
+		- Kontrollera att hela filen är inläst
+
+	Inmatning:
+		- Användaren matar in stora och små bokstäver
+		- Användaren matar in siffror
+		- Användaren matar in konstiga tecken
+		- Användaren matar in ord som inte finns
+		- Kontrollera vad som händer vid fler än 25 förekomster
+	Utskrifter:
+		- Kontrollera utskrift så att varje förekomst är uppbyggd på formen: 30 tecken <sökord> 30 tecken
+		- Kontrollera utskrift om ordet ligger i början av en fil
+		- Kontrollera utskrift om ordet ligger i slutet av en fil
+		- Kontrollera utskrift om ordet består av jättemånga bokstäver, typ "förtrogenhetskunskapsföreskriftsföreståndaren"
+		- Kontrollera utskrift om ordet består av jättefå bokstäver, typ "ö"
+		- Kontrollera utskrift om ordet består av små och stora bokstäver
+		-
+
+
+public class Tester
+
+	public static void main (String[] args){
+		test1;
+		test2;
+		test3;
+
+	public static String test1() {			
+		Return test1status;
+	}
+}
+
+Utskrift:
+test 1 fail
+test 2 success!!!
+test 3 fail
+
+
+
+
